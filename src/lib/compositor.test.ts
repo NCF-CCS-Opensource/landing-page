@@ -38,6 +38,18 @@ describe("computeDraw", () => {
     expect(centerY).toBeCloseTo(cutout.cy - 10);
   });
 
+  it("panned+zoomed: pan offset and zoom scale both apply together", () => {
+    const base = computeDraw(200, 200, cutout, { panX: 0, panY: 0, zoom: 1 });
+    const { rect } = computeDraw(200, 200, cutout, { panX: 30, panY: -10, zoom: 2 });
+
+    expect(rect.width).toBeCloseTo(base.rect.width * 2);
+    expect(rect.height).toBeCloseTo(base.rect.height * 2);
+    const centerX = rect.x + rect.width / 2;
+    const centerY = rect.y + rect.height / 2;
+    expect(centerX).toBeCloseTo(cutout.cx + 30);
+    expect(centerY).toBeCloseTo(cutout.cy - 10);
+  });
+
   it("clip always equals the cutout regardless of transform", () => {
     const { clip } = computeDraw(500, 500, cutout, { panX: 999, panY: -999, zoom: 3 });
     expect(clip).toEqual(cutout);
