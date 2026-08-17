@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { EVENT, PLACEHOLDER_ATTENDANCE_URL } from "@/lib/event";
+import { Button } from "@/components/ui/button";
 
 const CARDS = [
   {
@@ -54,6 +55,10 @@ export default function Home() {
           </Link>
         ))}
       </div>
+
+      <Button size="lg" render={<Link href="/generator" />}>
+        Get started
+      </Button>
     </main>
   );
 }

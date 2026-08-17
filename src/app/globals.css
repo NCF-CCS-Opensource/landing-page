@@ -1,8 +1,42 @@
+@import "tw-animate-css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: radial-gradient(circle at 50% 0%, #1a1442 0%, #04040d 60%);
-  color: #e7e6ff;
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  :root {
+    --background: oklch(0.09 0.03 290);
+    --foreground: oklch(0.93 0.03 290);
+    --card: oklch(0.14 0.04 290);
+    --card-foreground: oklch(0.93 0.03 290);
+    --popover: oklch(0.14 0.04 290);
+    --popover-foreground: oklch(0.93 0.03 290);
+    --primary: oklch(0.63 0.24 293);
+    --primary-foreground: oklch(0.98 0.01 290);
+    --secondary: oklch(0.2 0.05 290);
+    --secondary-foreground: oklch(0.93 0.03 290);
+    --muted: oklch(0.2 0.05 290);
+    --muted-foreground: oklch(0.72 0.05 290);
+    --accent: oklch(0.75 0.15 200);
+    --accent-foreground: oklch(0.1 0.03 290);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(1 0 0 / 12%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.63 0.24 293);
+    --radius: 0.625rem;
+  }
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background: radial-gradient(circle at 50% 0%, #1a1442 0%, #04040d 60%);
+  }
+  html {
+    @apply font-sans;
+  }
 }
